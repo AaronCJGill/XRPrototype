@@ -31,13 +31,21 @@ public class GunInput : MonoBehaviour
     {
         if (timer >= cooldownTime)
         {
-            if (OVRInput.GetDown(OVRInput.Button.Back))
-            {
-                Debug.Log("Pew");
-            }
-        }
 
-        if(timer < cooldownTime)
+        }
+        if (OVRInput.GetDown(OVRInput.Button.Back))
+        {
+            Debug.Log("Pew");
+        }
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
+        {
+            Debug.Log("Shoot");
+        }
+        if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+        {
+            Debug.Log("Bang");
+        }
+        if (timer < cooldownTime)
             timer = Mathf.Min( cooldownTime + 5, timer + Time.deltaTime);
         
     }
@@ -48,4 +56,8 @@ public class GunInput : MonoBehaviour
         //try not to 
     }
 
+
+
+    //idea - carry items and furniture to a different location to use them to block off certain spawner areas
+    //the idea of junk collection
 }
