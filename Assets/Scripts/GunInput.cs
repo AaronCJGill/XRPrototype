@@ -1,5 +1,5 @@
 using UnityEngine;
-using OVR.Input;
+using static OVRInput;
 public class GunInput : MonoBehaviour
 {
     [SerializeField]
@@ -15,10 +15,10 @@ public class GunInput : MonoBehaviour
     int ammoLeft;
     [SerializeField]
     int MaxAmmo;
-
+  
     void Start()
     {
-        
+        Debug.Log("startin");
     }
 
     // Update is called once per frame
@@ -31,20 +31,21 @@ public class GunInput : MonoBehaviour
     {
         if (timer >= cooldownTime)
         {
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+            {
+                Debug.Log("Pew");
 
+                //raycast out from gun barrel
+
+            }
+            /*
+            if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
+            {
+                Debug.Log("Shoot");
+            }*/
         }
-        if (OVRInput.GetDown(OVRInput.Button.Back))
-        {
-            Debug.Log("Pew");
-        }
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
-        {
-            Debug.Log("Shoot");
-        }
-        if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
-        {
-            Debug.Log("Bang");
-        }
+
+        
         if (timer < cooldownTime)
             timer = Mathf.Min( cooldownTime + 5, timer + Time.deltaTime);
         
