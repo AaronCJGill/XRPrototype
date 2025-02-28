@@ -12,9 +12,9 @@ public class GunInput : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     //maybe a machine on the wall is the only way to reload the gun?
     [SerializeField]
-    int ammoLeft;
+    int ammoLeft = 17;
     [SerializeField]
-    int MaxAmmo;
+    int MaxAmmo = 17;
   
     void Start()
     {
@@ -53,8 +53,10 @@ public class GunInput : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        //check to see if we are colliding with theplayer's controllers. 
-        //try not to 
+        if (collision.transform.CompareTag("Magazine"))
+        {
+
+        }
     }
 
 
